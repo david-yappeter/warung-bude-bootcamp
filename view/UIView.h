@@ -69,7 +69,7 @@ void RemoveDishView(struct Dish **head, struct Dish **tail) {
    printf("===================================================\n");
    printf("No.\tName\t\tQuantity\tPrice\n");
    while(curr != NULL){
-      printf("%-7d %-11s %03d Rp%-8d\n", (counter + 1), curr->name, curr->quantity, curr->price);
+      printf("%-7d %-15s %-015d Rp%-8d\n", (counter + 1), curr->name, curr->quantity, curr->price);
       curr = curr->next;
       counter++;
    }
@@ -146,15 +146,25 @@ void WartegCustomerListView() {
    for(int i = 0; i < 26; i++){
       struct Customer *curr = CustomerHead[i];
       
-      // while(curr != NULL){
-      //    printf("%d. %s\n", counter + 1, curr->name);
-      //    curr = curr->next;
-      //    counter++;
-      // }
       if(curr != NULL){
-         printf("%d. %s\n", i, curr->name);
+         printf("%d. ", i);
+      }
+      while(curr != NULL){
+         printf("%s", curr->name);
+         if(curr->next != NULL){
+            printf(" -> ");
+         }
+         else{
+            printf("\n");
+         }
+         curr = curr->next;
          counter++;
       }
+      // Head Only
+      // if(curr != NULL){
+      //    printf("%d. %s\n", i, curr->name);
+      //    counter++;
+      // }
    }
 
    if(counter == 0){
